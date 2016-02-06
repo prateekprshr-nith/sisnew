@@ -1,0 +1,1 @@
+This is a totally revamped version of SIS using laravel framework. I hope it turns out to be good.
