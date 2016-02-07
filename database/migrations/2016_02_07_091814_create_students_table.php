@@ -22,6 +22,8 @@ class CreateStudentsTable extends Migration
             $table->string('address', '200');
             $table->decimal('semester', '2');
             $table->string('sectionId', '10');
+            $table->string('password', '50');
+            $table->date('dob');
             $table->timestamps();
 
             // Key constraints
