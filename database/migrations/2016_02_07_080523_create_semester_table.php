@@ -12,8 +12,9 @@ class CreateSemesterTable extends Migration
      */
     public function up()
     {
-        Schema::create('semesters', function (Blueprint $table) {
-            $table->decimal('semNo', '2');
+        Schema::create('semesters', function (Blueprint $table)
+        {
+            $table->smallInteger('semNo');
             $table->timestamps();
 
             // Key constraints

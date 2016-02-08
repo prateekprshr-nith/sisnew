@@ -18,9 +18,9 @@ class CreateStudentsTable extends Migration
             $table->string('sName', '100');
             $table->string('dCode', '10');
             $table->string('email', '50');
-            $table->decimal('phoneNo', '10');
+            $table->string('phoneNo', '15');
             $table->string('address', '200');
-            $table->decimal('semester', '2');
+            $table->smallInteger('semNo');
             $table->string('sectionId', '10');
             $table->string('password', '50');
             $table->date('dob');
@@ -34,7 +34,7 @@ class CreateStudentsTable extends Migration
                   ->on('departments')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
-            $table->foreign('semester')
+            $table->foreign('semNo')
                   ->references('semNo')
                   ->on('semesters')
                   ->onDelete('cascade')

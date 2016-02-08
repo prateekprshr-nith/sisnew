@@ -18,7 +18,7 @@ class CreateTeachersTable extends Migration
             $table->string('fName', '100');
             $table->string('dCode', '10');
             $table->string('email', '50');
-            $table->decimal('phoneNo', '10');
+            $table->string('phoneNo', '15');
             $table->string('office', '200');
             $table->string('password', '50');
             $table->timestamps();
