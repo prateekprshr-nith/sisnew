@@ -32,7 +32,7 @@ class CreateAcademicRecordsTable extends Migration
                   ->onUpdate('cascade');
             $table->foreign('courseCode')
                   ->references('courseCode')
-                  ->on('courses')
+                  ->on('teachingDetails')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
         });
