@@ -46,42 +46,42 @@ class CreateTimeTablesTable extends Migration
                   ->onUpdate('cascade');
             $table->foreign('class1')
                   ->references('courseCode')
-                  ->on('courses')
+                  ->on('teachingDetails')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
             $table->foreign('class2')
                   ->references('courseCode')
-                  ->on('courses')
+                  ->on('teachingDetails')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
             $table->foreign('class3')
                   ->references('courseCode')
-                  ->on('courses')
+                  ->on('teachingDetails')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
             $table->foreign('class4')
                   ->references('courseCode')
-                  ->on('courses')
+                  ->on('teachingDetails')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
             $table->foreign('class5')
                   ->references('courseCode')
-                  ->on('courses')
+                  ->on('teachingDetails')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
             $table->foreign('class6')
                   ->references('courseCode')
-                  ->on('courses')
+                  ->on('teachingDetails')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
             $table->foreign('class7')
                   ->references('courseCode')
-                  ->on('courses')
+                  ->on('teachingDetails')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
             $table->foreign('class8')
                   ->references('courseCode')
-                  ->on('courses')
+                  ->on('teachingDetails')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
         });
