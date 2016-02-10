@@ -28,7 +28,8 @@ class CreateStudentsTable extends Migration
 
             // Key constraints
             $table->primary('rollNo');
-            $table->unique(['phoneNo', 'email']);
+            $table->unique('phoneNo');
+            $table->unique('email');
             $table->foreign('dCode')
                   ->references('dCode')
                   ->on('departments')
