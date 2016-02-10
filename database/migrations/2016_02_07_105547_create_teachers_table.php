@@ -25,7 +25,8 @@ class CreateTeachersTable extends Migration
 
             // Key constraints
             $table->primary('fId');
-            $table->unique(['phoneNo', 'email']);
+            $table->unique('phoneNo');
+            $table->unique('email');
             $table->foreign('dCode')
                   ->references('dCode')
                   ->on('departments')
