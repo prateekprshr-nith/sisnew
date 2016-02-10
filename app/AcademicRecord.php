@@ -8,5 +8,5 @@ class AcademicRecord extends Model
 {
     protected $table = 'academicRecords';
     protected $primaryKey = ['rollNo', 'courseCode'];
-    protected $incrementing = false;
+    public $incrementing = false;
 }

@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     protected $primaryKey = 'courseCode';
-    protected $incrementing = false;
+    public $incrementing = false;
 }

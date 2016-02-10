@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     protected $primaryKey = "rollNo";
-    protected $incrementing = false;
+    public $incrementing = false;
 }

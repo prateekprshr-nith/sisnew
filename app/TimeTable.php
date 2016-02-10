@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class TimeTable extends Model
 {
     protected $primaryKey = ['sectionId', 'semNo', 'day'];
-    protected $incrementing = false;
+    public $incrementing = false;
 }

@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Semester extends Model
 {
     protected $primaryKey = 'semNo';
-    protected $incrementing = false;
+    public $incrementing = false;
 }
