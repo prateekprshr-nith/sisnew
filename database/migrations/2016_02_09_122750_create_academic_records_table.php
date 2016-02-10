@@ -24,7 +24,7 @@ class CreateAcademicRecordsTable extends Migration
             $table->timestamps();
 
             // Key constraints
-            $table->primary('rollNo');
+            $table->primary(['rollNo', 'courseCode']);
             $table->foreign('rollNo')
                   ->references('rollNo')
                   ->on('students')
