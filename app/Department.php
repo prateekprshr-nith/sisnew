@@ -35,4 +35,24 @@ class Department extends Model
     {
         return $this->hasMany('App\Course', 'dCode', 'dCode');
     }
+
+    /**
+     * Get the sections of the department
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sections()
+    {
+        return $this->hasMany('App\Section', 'dCode', 'dCode');
+    }
+
+    /**
+     * Get the students of the department
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function students()
+    {
+        return $this->hasMany('App\Student', 'dCode', 'dCode');
+    }
 }
