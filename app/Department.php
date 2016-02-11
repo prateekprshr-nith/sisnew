@@ -24,4 +24,15 @@ class Department extends Model
     {
         return $this->hasMany('App\Teacher', 'dCode', 'dCode');
     }
+
+
+    /**
+     * Get the courses of the department
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function courses()
+    {
+        return $this->hasMany('App\Course', 'dCode', 'dCode');
+    }
 }
