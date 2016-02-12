@@ -19,8 +19,18 @@ class Semester extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function timeTable()
+    public function timeTables()
     {
         return $this->hasMany('App\TimeTable', 'semNo', 'semNo');
+    }
+
+    /**
+     * Get the students
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function students()
+    {
+        return $this->hasMany('App\Student', 'semNo', 'semNo');
     }
 }
