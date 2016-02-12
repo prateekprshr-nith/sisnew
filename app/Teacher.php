@@ -23,4 +23,14 @@ class Teacher extends Model
     {
         return $this->belongsTo('App\Department', 'dCode', 'dCode');
     }
+
+    /**
+     * Get the teaching details
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function teachingDetails()
+    {
+        return $this->hasMany('App\TeachingDetail', 'fId', 'fId');
+    }
 }
