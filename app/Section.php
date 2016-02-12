@@ -33,4 +33,15 @@ class Section extends Model
     {
         return $this->hasMany('App\Student', 'sectionId', 'sectionId');
     }
+
+    /**
+     * Get the time tables
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function timeTables()
+    {
+        return $this->hasMany('App\TimeTable', 'sectionId', 'sectionId');
+    }
+
 }

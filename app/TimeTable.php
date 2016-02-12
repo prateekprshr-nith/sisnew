@@ -23,4 +23,14 @@ class TimeTable extends Model
     {
         return $this->belongsTo('App\Semester', 'semNo', 'semNo');
     }
+
+    /**
+     * Get the section
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function section()
+    {
+        return $this->belongsTo('App\Section', 'sectionId', 'sectionId');
+    }
 }
