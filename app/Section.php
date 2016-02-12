@@ -23,4 +23,14 @@ class Section extends Model
     {
         return $this->belongsTo('App\Department', 'dCode', 'dCode');
     }
+
+    /**
+     * Get the students
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function students()
+    {
+        return $this->hasMany('App\Student', 'sectionId', 'sectionId');
+    }
 }
