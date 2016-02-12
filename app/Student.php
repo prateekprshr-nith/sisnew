@@ -43,4 +43,14 @@ class Student extends Model
     {
         return $this->belongsTo('App\Section', 'sectionId', 'sectionId');
     }
+
+    /**
+     * Get the academic records
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function academicRecords()
+    {
+        return $this->hasMany('App\AcademicRecord', 'rollNo', 'rollNo');
+    }
 }
