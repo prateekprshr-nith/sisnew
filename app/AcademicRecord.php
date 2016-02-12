@@ -24,4 +24,14 @@ class AcademicRecord extends Model
     {
         return $this->belongsTo('App\Student', 'rollNo', 'rollNo');
     }
+
+    /**
+     * Get the teaching detail
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function teachingDetail()
+    {
+        return $this->belongsTo('App\TeachingDetail', 'courseCode', 'courseCode');
+    }
 }

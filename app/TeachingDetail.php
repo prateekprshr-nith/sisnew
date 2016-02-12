@@ -34,4 +34,14 @@ class TeachingDetail extends Model
     {
         return $this->hasOne('App\Course', 'courseCode', 'courseCode');
     }
+
+    /**
+     * Get the academic records
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function academicRecords()
+    {
+        return $this->hasMany('App\AcademicRecord', 'courseCode', 'courseCode');
+    }
 }
