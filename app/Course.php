@@ -23,4 +23,14 @@ class Course extends Model
     {
         return $this->belongsTo('App\Department', 'dCode', 'dCode');
     }
+
+    /**
+     * Get the teaching detail
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function teachingDetail()
+    {
+        return $this->hasOne('App\TeachingDetail', 'courseCode', 'courseCode');
+    }
 }
