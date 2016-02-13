@@ -39,11 +39,13 @@ class TimeTable extends Model
      * Get the teaching detail.
      *
      * NOTE: This relation may be problematic, and it may have to be worked out
-     * again
+     * again, its not required for now
      *
      */
+    /*
     public function teachingDetail()
     {
         //return $this->belongsTo('App\TeachingDetail', 'courseCode', '')
     }
+    */
 }
