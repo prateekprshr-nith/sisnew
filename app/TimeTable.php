@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TimeTable extends Model
 {
+    protected $table = 'timeTables';
     protected $primaryKey = ['sectionId', 'semNo', 'day'];
     public $incrementing = false;
 
@@ -32,5 +33,17 @@ class TimeTable extends Model
     public function section()
     {
         return $this->belongsTo('App\Section', 'sectionId', 'sectionId');
+    }
+
+    /**
+     * Get the teaching detail.
+     *
+     * NOTE: This relation may be problematic, and it may have to be worked out
+     * again
+     *
+     */
+    public function teachingDetail()
+    {
+        //return $this->belongsTo('App\TeachingDetail', 'courseCode', '')
     }
 }
