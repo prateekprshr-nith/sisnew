@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Online Semester Registration</title>
+    <title>Student Information Portal</title>
 
     <!-- Bootstrap -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Online Semester Registration</a>
+                <a class="navbar-brand" href="/">Student Information Portal</a>
             </div>
 
             <div class="collapse navbar-collapse" id="mynavbar-content">
