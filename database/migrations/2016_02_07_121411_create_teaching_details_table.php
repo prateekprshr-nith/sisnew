@@ -15,14 +15,14 @@ class CreateTeachingDetailsTable extends Migration
         Schema::create('teachingDetails', function (Blueprint $table)
         {
             $table->string('courseCode', '10');
-            $table->string('fId', '20');
+            $table->string('facultyId', '20');
             $table->smallInteger('lecturesHeld');
             $table->timestamps();
 
             // Key constraints
             $table->primary('courseCode');
-            $table->foreign('fId')
-                  ->references('fId')
+            $table->foreign('facultyId')
+                  ->references('facultyId')
                   ->on('teachers')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
