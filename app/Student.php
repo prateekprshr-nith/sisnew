@@ -2,20 +2,44 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * Class Student, this is our model for students table.
+ * Class Student, this model corresponds
+ * to 'students' database table
  *
  * @package App
  */
-class Student extends Model
+class Student extends Authenticatable
 {
-    protected $primaryKey = "rollNo";
+    protected $table = 'students';
+    protected $primaryKey = 'rollNo';
     public $incrementing = false;
 
+    // Fillable and hidden arrtibutes
+    protected $fillable = [
+        'rollNo', 'dCode', 'semNo', 'registrationNo', 'sectionId',
+        'name', 'fatherName', 'motherName', 'email', 'phoneNo',
+        'currentAddress', 'permanentAddress', 'password', 'dob',
+        'verificationCode', 'verified',
+    ];
+
+    protected $hidden = [
+        'password', 'remember_token', 'verificationCode',
+    ];
+
+
     /**
-     * Get the department
+     * Model relationships
+     *
+     * These functions define the relationship of
+     * this model with other models, and takes
+     * care of how related data is retrived
+     */
+
+    /**
+     * Get the department of this student
+     * Department 1 : many Student
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -25,17 +49,8 @@ class Student extends Model
     }
 
     /**
-     * Get the semester
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function semester()
-    {
-        return $this->belongsTo('App\Semester', 'semNo', 'semNo');
-    }
-
-    /**
-     * Get the section
+     * Get the section of this student
+     * Section 1 : many Student
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -45,12 +60,35 @@ class Student extends Model
     }
 
     /**
-     * Get the academic records
+     * Get the semester of this student
+     * Semester 1 : many Student
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function academicRecords()
+    public function semester()
     {
-        return $this->hasMany('App\AcademicRecord', 'rollNo', 'rollNo');
+        return $this->belongsTo('App\Semester', 'semNo', 'semNo');
+    }
+
+    /**
+     * Get the grade of the student
+     * Student 1 : 1 Grade
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function grade()
+    {
+        return $this->hasOne('App\Grade', 'rollNo', 'rollNo');
+    }
+
+    /**
+     * Get the image of the student
+     * Student 1 : 1 StudentImage
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function image()
+    {
+        return $this->hasOne('App\StudentImage', 'rollNo', 'rollNo');
     }
 }
