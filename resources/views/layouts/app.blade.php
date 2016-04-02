@@ -49,14 +49,6 @@
                     {{-- */$user= 'student';/* --}}
                 @elseif(Auth::guard('teacher')->user())
                     {{-- */$user = 'teacher';/* --}}
-                @elseif(Auth::guard('libraryStaff')->user())
-                    {{-- */$user = 'libraryStaff';/* --}}
-                @elseif(Auth::guard('hostelStaff')->user())
-                    {{-- */$user = 'hostelStaff';/* --}}
-                @elseif(Auth::guard('adminStaff')->user())
-                    {{-- */$user = 'adminStaff';/* --}}
-                @elseif(Auth::guard('chiefWardenStaff')->user())
-                    {{-- */$user = 'chiefWardenStaff';/* --}}
                 @elseif(Auth::guard('admin')->user())
                     {{-- */$user = 'admin';/* --}}
                 @elseif(Auth::guest())

@@ -26,9 +26,7 @@ class RedirectToHome
     public function handle($request, Closure $next)
     {
         $guardArr = [
-            'student', 'teacher', 'libraryStaff',
-            'hostelStaff', 'adminStaff', 'admin',
-            'chiefWardenStaff',
+            'student', 'teacher', 'admin',
         ];
 
         // Check if any of the above
