@@ -14,7 +14,7 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table)
         {
-            $table->string('fId', '20');
+            $table->string('facultyId', '20');
             $table->string('fName', '100');
             $table->string('dCode', '10');
             $table->string('email', '50');
@@ -24,7 +24,7 @@ class CreateTeachersTable extends Migration
             $table->timestamps();
 
             // Key constraints
-            $table->primary('fId');
+            $table->primary('facultyId');
             $table->unique('phoneNo');
             $table->unique('email');
             $table->foreign('dCode')
