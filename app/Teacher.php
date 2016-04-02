@@ -2,35 +2,47 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * Class Teacher, this is the model for our teacher table
+ * Class Teacher, this model corresponds
+ * to 'teachers' database model
  *
  * @package App
  */
-class Teacher extends Model
+class Teacher extends Authenticatable
 {
-    protected $primaryKey = 'fId';
+    protected $table = 'teachers';
+    protected $primaryKey = 'facultyId';
     public $incrementing = false;
 
+    // Fillable and hidden arrtibutes
+    protected $fillable = [
+        'facultyId', 'dCode', 'name', 'email', 'office',
+        'semester', 'password', 'firstLogin',
+    ];
+
+    protected $hidden = [
+        'password', 'remember_token'
+    ];
+
+
     /**
-     * Get the department of the teacher
+     * Model relationships
+     *
+     * These functions define the relationship of
+     * this model with other models, and takes
+     * care of how related data is retrived
+     */
+
+    /**
+     * Get the department of this teacher
+     * Department 1 : many Teacher
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function department()
     {
         return $this->belongsTo('App\Department', 'dCode', 'dCode');
-    }
-
-    /**
-     * Get the teaching details
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function teachingDetails()
-    {
-        return $this->hasMany('App\TeachingDetail', 'fId', 'fId');
     }
 }
