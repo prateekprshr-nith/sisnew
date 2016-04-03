@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container col-md-offset-2 col-md-8">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
             <div class="panel-heading">
                 <strong>Registration: Please enter your details correctly</strong>
             </div>
