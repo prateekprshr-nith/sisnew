@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-default">
+                <div class="panel panel-success">
                     <div class="panel-heading">
                         <span class="glyphicon glyphicon-pushpin"></span>
                         <strong> Hostels currently entered in the database.</strong>
@@ -56,7 +56,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
+                <div class="panel panel-danger">
                     <div class="panel-heading">
                         <span class="glyphicon glyphicon-plus"></span>
                         <strong> Add new hostel</strong>

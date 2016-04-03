@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-default">
+                <div class="panel panel-success">
                     <div class="panel-heading">
                         <span class="glyphicon glyphicon-user"></span>
                         <strong> Students currently registered in the system</strong>

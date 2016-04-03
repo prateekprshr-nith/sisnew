@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <span class="glyphicon glyphicon-info-sign"></span>
                         <strong> Update: Please enter your details correctly</strong>

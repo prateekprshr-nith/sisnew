@@ -14,6 +14,11 @@ class Section extends Model
     protected $primaryKey = 'sectionId';
     public $incrementing = false;
 
+    // Fillable and hidden arrtibutes
+    protected $fillable = [
+        'sectionId',
+    ];
+
     /**
      * Get the department
      *

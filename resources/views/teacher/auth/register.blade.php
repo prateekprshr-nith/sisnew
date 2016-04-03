@@ -2,7 +2,7 @@
 
 @section('teacherRegPanel')
     <div class="container col-sm-offset-2 col-sm-8">
-        <div class="panel panel-default">
+        <div class="panel panel-danger">
             <div class="panel-heading">
                 <span class="glyphicon glyphicon-plus"></span>
                 <strong> Add a new teacher</strong>
