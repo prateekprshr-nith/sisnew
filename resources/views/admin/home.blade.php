@@ -2,10 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="jumbotron">
-        <h1>Welcome Admin</h1>
-        <p> Manage all the sections of the System Information portal from here</p>
-    </div>
+    
 
     <!-- First panel: Manage users -->
     <div class="col-md-6 col-md-offset-3">
