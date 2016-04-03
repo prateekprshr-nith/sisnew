@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container" style="background-color:rgba(0,110,80,0.9)">
-	<div class="row">
+	<div class="row" style="padding-top:20px">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
 				<div class="panel-heading" style="background-color:rgb(0,110,80);color:rgb(255,255,255)">
