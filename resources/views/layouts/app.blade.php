@@ -31,7 +31,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Student Information Portal</a>
+                            <a class="navbar-brand" href="/" style="float:right;">
+                                <span class="glyphicon glyphicon-tasks"></span> Student Information Portal
+                            </a>
+                
             </div>
 
             <div class="collapse navbar-collapse" id="mynavbar-content">
