@@ -15,15 +15,13 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form class="form-horizontal" role="form" method="POST" action="/teachers/updateInfo"
+                        <form class="form-horizontal" role="form" method="POST" action="/admins/updateInfo"
                               accept-charset="UTF-8" id="updateInfoForm">
                             {{ csrf_field() }}
                             {{ method_field('PATCH') }}
 
                             <!-- Display Validation Errors -->
                             @include('common.errors')
-
-                            <!-- Arnav and mumuksh write your code here-->
 
                             <!-- First row current password-->
                             <div class="form-group">

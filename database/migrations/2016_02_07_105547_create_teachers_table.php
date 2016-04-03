@@ -3,6 +3,10 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+/**
+ * Class CreateTeachersTable, this migration
+ * creates the 'teachers' table in databse
+ */
 class CreateTeachersTable extends Migration
 {
     /**
@@ -15,23 +19,25 @@ class CreateTeachersTable extends Migration
         Schema::create('teachers', function (Blueprint $table)
         {
             $table->string('facultyId', '20');
-            $table->string('fName', '100');
-            $table->string('dCode', '10');
+            $table->string('name', '100');
             $table->string('email', '50');
-            $table->string('phoneNo', '15');
-            $table->string('office', '200');
-            $table->string('password', '50');
+            $table->string('dCode', '10');
+            $table->string('office', '50');
+            $table->smallInteger('semester')->nullable();   // The semester given to teacher
+            $table->string('password', '100');
+            $table->boolean('firstLogin');
+            $table->rememberToken();
             $table->timestamps();
 
             // Key constraints
             $table->primary('facultyId');
-            $table->unique('phoneNo');
             $table->unique('email');
+            $table->unique('semester');
             $table->foreign('dCode')
-                  ->references('dCode')
-                  ->on('departments')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
+                ->references('dCode')
+                ->on('departments')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
