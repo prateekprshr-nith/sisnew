@@ -19,7 +19,7 @@ class CreateAdminsTable extends Migration
             $table->timestamps();
 
             // Key constraints
-            $table->primary('id');
+            $table->primary('adminId');
         });
     }
 
