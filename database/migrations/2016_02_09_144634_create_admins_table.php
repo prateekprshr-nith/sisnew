@@ -14,8 +14,8 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table)
         {
-            $table->string('id', '20');
-            $table->string('password', '50');
+            $table->string('adminId', '20');
+            $table->string('password', '100');
             $table->timestamps();
 
             // Key constraints

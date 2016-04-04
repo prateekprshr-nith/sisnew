@@ -22,7 +22,7 @@ class CreateStudentsTable extends Migration
             $table->string('address', '200');
             $table->smallInteger('semNo');
             $table->string('sectionId', '10');
-            $table->string('password', '50');
+            $table->string('password', '100');
             $table->date('dob');
             $table->timestamps();
 
