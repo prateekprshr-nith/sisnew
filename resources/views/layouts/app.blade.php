@@ -61,7 +61,7 @@
                         @if($user == 'student')
                             <li><a href="/students/home">Home</a></li>
                             <li><a href="/students/performance">View Performance</a></li>
-                            <li><a href="#">View Attendance</a></li>
+                            <li><a href="/students/attendance">View Attendance</a></li>
                             <li><a href="#">Assignments</a></li>
                             <li><a href="#">Doubt corner</a></li>
                         @endif
