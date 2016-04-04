@@ -18,8 +18,10 @@ use Intervention\Image\Facades\Image;
  */
 class HomeController extends Controller
 {
-    // Student performance view
+    // Student views
     protected $performanceView = 'student.performance';
+    protected $attendanceView = 'student.attendance';
+
     /**
      * Create a new controller instance.
      *
@@ -57,6 +59,14 @@ class HomeController extends Controller
         $academicRecords = Auth::guard('student')->user()->academicRecords;
 
         return view($this->performanceView, ['academicRecords' => $academicRecords]);
+    }
+
+    public function showStudentAttendance ()
+    {
+        // Get the academic records of student
+        $academicRecords = Auth::guard('student')->user()->academicRecords;
+
+        return view($this->attendanceView, ['academicRecords' => $academicRecords]);
     }
 
     /**
