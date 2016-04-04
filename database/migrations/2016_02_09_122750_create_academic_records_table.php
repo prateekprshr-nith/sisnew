@@ -16,10 +16,10 @@ class CreateAcademicRecordsTable extends Migration
         {
             $table->string('rollNo', '20');
             $table->string('courseCode', '10');
-            $table->smallInteger('attendance');
-            $table->smallInteger('periodicalMarks');
-            $table->smallInteger('asnMarks');
-            $table->smallInteger('finalMarks');
+            $table->smallInteger('attendance')->nullable();
+            $table->smallInteger('periodicalMarks')->nullable();
+            $table->smallInteger('asnMarks')->nullable();
+            $table->smallInteger('finalMarks')->nullable();
             $table->timestamps();
 
             // Key constraints

@@ -16,7 +16,7 @@ class CreateTeachingDetailsTable extends Migration
         {
             $table->string('courseCode', '10');
             $table->string('facultyId', '20');
-            $table->smallInteger('lecturesHeld');
+            $table->smallInteger('lecturesHeld')->nullable();
             $table->timestamps();
 
             // Key constraints
