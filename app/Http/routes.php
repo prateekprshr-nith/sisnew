@@ -39,6 +39,7 @@ Route::group(['middleware' => 'web'], function ()
 
         // Student view routes
         Route::get('home', 'Student\HomeController@index');
+        Route::get('performance', 'Student\HomeController@showStudentPerformance');
 
         // Student image route, fetches the image of student
         Route::get('image', 'Student\HomeController@getImage');
