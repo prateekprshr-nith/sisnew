@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Teacher extends Model
 {
-    protected $primaryKey = 'fId';
+    protected $primaryKey = 'facultyId';
     public $incrementing = false;
 
     /**
@@ -31,6 +31,6 @@ class Teacher extends Model
      */
     public function teachingDetails()
     {
-        return $this->hasMany('App\TeachingDetail', 'fId', 'fId');
+        return $this->hasMany('App\TeachingDetail', 'facultyId', 'facultyId');
     }
 }

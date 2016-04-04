@@ -22,7 +22,7 @@ class TeachingDetail extends Model
      */
     public function teacher()
     {
-        return $this->belongsTo('App\Teacher', 'fId', 'fId');
+        return $this->belongsTo('App\Teacher', 'facultyId', 'facultyId');
     }
 
     /**
