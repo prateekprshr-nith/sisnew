@@ -20,7 +20,6 @@ class CreateAcademicRecordsTable extends Migration
             $table->smallInteger('periodicalMarks');
             $table->smallInteger('asnMarks');
             $table->smallInteger('finalMarks');
-            $table->smallInteger('totalMarks');
             $table->timestamps();
 
             // Key constraints
