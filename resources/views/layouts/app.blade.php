@@ -56,15 +56,16 @@
                 @endif
 
                 @if($user != 'guest')
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- #TODO add the other tabs here -->
-
                     <ul class="nav navbar-nav navbar-right">
+
+                        @if($user == 'student')
+                            <li><a href="/students/home">Home</a></li>
+                            <li><a href="#">View Performance</a></li>
+                            <li><a href="#">View Attendance</a></li>
+                            <li><a href="#">Assignments</a></li>
+                            <li><a href="#">Doubt corner</a></li>
+                        @endif
+
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 @if($user == 'admin')
