@@ -71,14 +71,13 @@ class Student extends Authenticatable
     }
 
     /**
-     * Get the grade of the student
-     * Student 1 : 1 Grade
+     * Get the academic records
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function grade()
+    public function academicRecords()
     {
-        return $this->hasOne('App\Grade', 'rollNo', 'rollNo');
+        return $this->hasMany('App\AcademicRecord', 'rollNo', 'rollNo');
     }
 
     /**
