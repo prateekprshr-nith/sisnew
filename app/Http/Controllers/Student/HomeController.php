@@ -37,7 +37,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('student.home');
+        // Get the student info
+        $student = Auth::guard('student')->user();
+        $department = $student->department->dName;
+
+        return view('student.home', ['student' => $student, 'department' => $department]);
     }
 
     /**
