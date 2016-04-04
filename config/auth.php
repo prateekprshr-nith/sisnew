@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'student',
+        'passwords' => 'students',
     ],
 
     /*
@@ -36,6 +36,21 @@ return [
     */
 
     'guards' => [
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'teacher' => [
+            'driver' => 'session',
+            'provider' => 'teachers',
+        ],
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -65,9 +80,19 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'students' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Student::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+
+        'teachers' => [
+            'driver' => 'eloquent',
+            'model' => App\Teacher::class,
         ],
 
         // 'users' => [
@@ -96,9 +121,16 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'email' => 'auth.emails.password',
+        'students' => [
+            'provider' => 'students',
+            'email' => 'student.auth.emails.password',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'teachers' => [
+            'provider' => 'teachers',
+            'email' => 'teacher.auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
         ],
