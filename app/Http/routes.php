@@ -68,16 +68,22 @@ Route::group(['middleware' => 'web'], function ()
         Route::patch('/updateInfo/password', 'Teacher\InformationUpdateController@updatePassword');
 
         // Teacher course management routes
+        Route::get('courses', 'Teacher\AcademicsController@showCourseManagementView');
         Route::put('/courses/addCourse', 'Teacher\AcademicsController@addTeacherCourse');
         Route::patch('/courses/updateLectures', 'Teacher\AcademicsController@updateLectures');
         Route::delete('/courses/removeCourse', 'Teacher\AcademicsController@removeTeacherCourse');
+
+        // Teacher student record management routes
+        Route::get('studentRecords', 'Teacher\AcademicsController@showTeacherCourses');
+        Route::get('studentRecords/{courseCode}', 'Teacher\AcademicsController@showStudentRecords');
+        Route::put('/studentRecords/{courseCode}/addStudentRecord', 'Teacher\AcademicsController@addStudentRecord');
+        Route::patch('/studentRecords/{courseCode}/updateStudentRecord', 'Teacher\AcademicsController@updateStudentRecord');
 
         // Manual registration is disabled
         // Route::get('register', 'Teacher\Auth\AuthController@showRegistrationForm');
 
         // Teacher view routes
         Route::get('home', 'Teacher\HomeController@index');
-        Route::get('courses', 'Teacher\AcademicsController@showCourseManagementView');
 
     });
 
