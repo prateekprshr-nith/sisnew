@@ -67,7 +67,7 @@
                         @elseif($user == 'teacher')
                             <li><a href="/teachers/home">Home</a></li>
                             <li><a href="/teachers/courses">Teaching Information</a></li>
-                            <li><a href="#">Student Records</a></li>
+                            <li><a href="/teachers/studentRecords">Student Records</a></li>
                             <li><a href="#">Assignments</a></li>
                             <li><a href="#">Doubt corner</a></li>
                         @endif
