@@ -50,3 +50,21 @@ function loadAvatarIcon(elementId)
 {
     document.getElementById(elementId).src = '/images/circle.png';
 }
+
+
+/*
+ * This function sets the href field of a link
+ */
+function setLinkUrl(elementId, url)
+{
+    if(url === null)
+    {
+        document.getElementById(elementId).href = '#';
+    }
+    else
+    {
+        document.getElementById(elementId).href = url;
+    }
+
+
+}
