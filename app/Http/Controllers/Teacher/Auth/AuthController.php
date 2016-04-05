@@ -62,6 +62,7 @@ class AuthController extends Controller
             'dCode' => 'required|regex:/[A-Z]{3,5}/',
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:teachers',
+            'phoneNo' => 'required|regex:/(\+91)?[0-9]{10}/|unique:teachers',
             'office' => 'required',
             'password' => 'required|min:8',
         ]);
@@ -81,6 +82,7 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'office' => $data['office'],
+            'phoneNo' => $data['phoneNo'],
             'password' => bcrypt($data['password']),
             'firstLogin' => true,
         ]);
