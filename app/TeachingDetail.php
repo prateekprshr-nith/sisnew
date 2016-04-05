@@ -15,6 +15,11 @@ class TeachingDetail extends Model
     protected $primaryKey = 'courseCode';
     public $incrementing = false;
 
+    //Fillabe attributes
+    protected $fillable = [
+        'courseCode', 'facultyId', 'lecturesHeld',
+    ];
+
     /**
      * Get the teacher
      *
