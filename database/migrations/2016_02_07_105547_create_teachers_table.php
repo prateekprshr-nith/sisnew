@@ -23,7 +23,7 @@ class CreateTeachersTable extends Migration
             $table->string('email', '50');
             $table->string('dCode', '10');
             $table->string('office', '50');
-            $table->smallInteger('semester')->nullable();   // The semester given to teacher
+            $table->string('phoneNo', '15');
             $table->string('password', '100');
             $table->boolean('firstLogin');
             $table->rememberToken();
@@ -32,7 +32,6 @@ class CreateTeachersTable extends Migration
             // Key constraints
             $table->primary('facultyId');
             $table->unique('email');
-            $table->unique('semester');
             $table->foreign('dCode')
                 ->references('dCode')
                 ->on('departments')
