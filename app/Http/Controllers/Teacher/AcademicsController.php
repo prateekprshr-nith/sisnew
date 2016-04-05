@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Teacher;
 
+use App\Course;
 use App\TeachingDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -37,12 +38,17 @@ class AcademicsController extends Controller
      *
      * @return mixed
      */
-    public function showTeacherCourses ()
+    public function showCourseManagementView ()
     {
         // Get the courses teacher is teaching
-        $courses = Auth::guard('teacher')->user()->teachingDetails;
+        $teacherCourses = Auth::guard('teacher')->user()->teachingDetails;
 
-        return view($this->courseView, ['courses' => $courses]);
+        // Get a list of all courses
+        $courses = Course::where('dCode', Auth::guard('teacher')->user()->dCode)
+            ->whereNotIn('courseCode', $teacherCourses)
+            ->get();
+
+        return view($this->courseView, ['teacherCourses' => $teacherCourses, 'courses' => $courses]);
     }
 
     /**
@@ -63,6 +69,28 @@ class AcademicsController extends Controller
         // Update the lectures
         TeachingDetail::where('courseCode', $courseCode)
             ->update(['lecturesHeld' => $lecturesHeld]);
+
+        return redirect()->back();
+    }
+
+    /**
+     * Add a course that teacher is teaching
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function addTeacherCourse (Request $request)
+    {
+        $facultyId = Auth::guard('teacher')->user()->facultyId;
+        $courseCode = $request['courseCode'];
+        $lecturesHeld = 0;
+
+        // Add the course
+        TeachingDetail::create([
+            'facultyId' => $facultyId,
+            'courseCode' => $courseCode,
+            'lecturesHeld' => $lecturesHeld,
+        ]);
 
         return redirect()->back();
     }
