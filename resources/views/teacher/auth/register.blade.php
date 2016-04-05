@@ -34,7 +34,7 @@
                         </div>
                     </div>
 
-                    <!-- Second row Faculty ID  -->
+                    <!-- Second row Faculty ID and phone no -->
                     <div class="row">
                         <div class="form-group row col-md-6 center-block">
 
@@ -42,6 +42,14 @@
 
                             <div class="col-md-8">
                                 <input required class="form-control" name="facultyId" type="text" id="facultyId">
+                            </div>
+                        </div>
+                        <div class="form-group row col-md-6 center-block">
+
+                            <label class="col-md-4 control-label" for="phoneNo">Phone No</label>
+
+                            <div class="col-md-8">
+                                <input required class="form-control" name="phoneNo" type="tel" id="phoneNo">
                             </div>
                         </div>
                     </div>
