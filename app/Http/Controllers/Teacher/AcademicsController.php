@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Course;
 use App\TeachingDetail;
+use App\AcademicRecord;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,10 @@ class AcademicsController extends Controller
     // Course view
     protected $courseView = 'teacher.courses';
 
+    // Student record management views
+    protected $courseSelectionView = 'teacher.courseSelection';
+    protected $studentRecordsView = 'teacher.studentRecords';
+
     /**
      * Create a new controller instance.
      *
@@ -32,6 +37,9 @@ class AcademicsController extends Controller
         $this->middleware('auth:teacher');
         $this->middleware('firstLogin:teacher');
     }
+
+    //------------------------------------------------------------------------------------------------------------------
+    // Course management functions
 
     /**
      * Show courses currently taught by teacher
@@ -107,6 +115,45 @@ class AcademicsController extends Controller
 
         // Remove the course
         TeachingDetail::destroy($courseCode);
+
+        return redirect()->back();
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    // Student record management functions
+
+    public function showTeacherCourses()
+    {
+        // Get the courses teacher is teaching
+        $teacherCourses = Auth::guard('teacher')->user()->teachingDetails;
+
+        return view($this->courseSelectionView, ['teacherCourses' => $teacherCourses]);
+    }
+
+    public function showStudentRecords ($courseCode)
+    {
+        // Get the student record
+        $students = AcademicRecord::where('courseCode', $courseCode)->get();
+
+        return view($this->studentRecordsView, ['students' => $students, 'courseCode' => $courseCode, 'count' => 0]);
+    }
+
+    public function addStudentRecord (Request $request)
+    {
+        $rollNo = $request['rollNo'];
+        $courseCode = $request['courseCode'];
+
+        $this->validate($request, [
+            'rollNo' => 'required|exists:students|regex:/[0-9]{2}M?[0-9]{3}/|unique:academicRecords,rollNo',
+        ], [
+            'exists' => 'This student has not registered or the roll no is invalid'
+        ]);
+
+        // Save the student record
+        AcademicRecord::create([
+            'rollNo' => $rollNo,
+            'courseCode' => $courseCode,
+        ]);
 
         return redirect()->back();
     }
