@@ -77,6 +77,29 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        // Seed the teachers table
+        $facultyId = 't1';
+        $dCode = 'CSED';
+        $name = 'Teacher 1';
+        $email = 't1@ex.com';
+        $office = 'CSED';
+        $phoneNo = '1234567890';
+        $password = bcrypt('password');
+
+        if(DB::table('teachers')->where('facultyId', $facultyId)->value('facultyId') == null)
+        {
+            DB::table('teachers')->insert([
+                'facultyId' => $facultyId,
+                'dCode' => $dCode,
+                'name' => $name,
+                'email' => $email,
+                'office' => $office,
+                'phoneNo' => $phoneNo,
+                'password' => $password,
+                'firstLogin' => true,
+            ]);
+        }
+
         // Seed the days table
         $dayArr = [
             'SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY',
@@ -92,5 +115,39 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         }
+        
+        // Seed the courses table
+        $courseArr = [
+            'CS-100' => ['dCode' => 'CSED', 'courseName' => 'C programming'],
+        ];
+
+        foreach($courseArr as $courseCode => $detail)
+        {
+            if(DB::table('courses')->where('courseCode', $courseCode)->value('courseCode') == null)
+            {
+                DB::table('courses')->insert([
+                    'courseCode' => $courseCode,
+                    'dCode' => $detail['dCode'],
+                    'courseName' => $detail['courseName'],
+                ]);
+            }
+        }
+
+        // Seed the teaching details table
+        $teachingDetails = [
+            'CS-100' => 't1',
+        ];
+
+        foreach($teachingDetails as $courseCode => $facultyId)
+        {
+            if(DB::table('teachingDetails')->where('courseCode', $courseCode)->value('courseCode') == null)
+            {
+                DB::table('teachingDetails')->insert([
+                    'courseCode' => $courseCode,
+                    'facultyId' => $facultyId,
+                ]);
+            }
+        }
+
     }
 }
