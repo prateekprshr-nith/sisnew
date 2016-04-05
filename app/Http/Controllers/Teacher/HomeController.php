@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teacher;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class HomeController, this class contains
@@ -34,6 +35,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('teacher.home');
+        // Get the teacher info
+        $teacher = Auth::guard('teacher')->user();
+        $department = $teacher->department->dName;
+
+        return view('teacher.home', ['teacher' => $teacher, 'department' => $department]);
     }
 }
