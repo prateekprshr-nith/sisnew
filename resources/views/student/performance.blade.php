@@ -11,6 +11,9 @@
                     </div>
 
                     <div class="panel-body">
+                        @if($academicRecords->isEmpty())
+                                You are not enrolled in any courses.
+                        @else
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -60,7 +63,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
