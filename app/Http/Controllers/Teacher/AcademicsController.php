@@ -166,7 +166,8 @@ class AcademicsController extends Controller
         $courseCode = $request['courseCode'];
 
         $this->validate($request, [
-            'rollNo' => 'required|exists:students|regex:/[0-9]{2}M?[0-9]{3}/|unique:academicRecords,rollNo',
+            'rollNo' => 'required|exists:students|regex:/[0-9]{2}M?[0-9]{3}/|
+                        unique:academicRecords,rollNo,NULL,id,courseCode,' . $courseCode,
         ], [
             'exists' => 'This student has not registered or the roll no is invalid'
         ]);
