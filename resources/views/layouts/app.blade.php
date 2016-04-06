@@ -98,7 +98,16 @@
                 @else
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/students/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-                        <li><a href="/students/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span class="glyphicon glyphicon-log-in"></span> Login
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/students/login"> Student</a></li>
+                                <li><a href="/teachers/login"> Teacher</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 @endif
 
