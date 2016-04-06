@@ -122,6 +122,11 @@ class AcademicsController extends Controller
     //------------------------------------------------------------------------------------------------------------------
     // Student record management functions
 
+    /**
+     * Show course list that a teacher is teaching
+     *
+     * @return mixed
+     */
     public function showTeacherCourses()
     {
         // Get the courses teacher is teaching
@@ -130,6 +135,12 @@ class AcademicsController extends Controller
         return view($this->courseSelectionView, ['teacherCourses' => $teacherCourses]);
     }
 
+    /**
+     * Show student records
+     *
+     * @param $courseCode
+     * @return mixed
+     */
     public function showStudentRecords ($courseCode)
     {
         // Get the student record
@@ -138,6 +149,12 @@ class AcademicsController extends Controller
         return view($this->studentRecordsView, ['students' => $students, 'courseCode' => $courseCode, 'count' => 0]);
     }
 
+    /**
+     * Add a new student record
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function addStudentRecord (Request $request)
     {
         $rollNo = $request['rollNo'];
@@ -154,6 +171,29 @@ class AcademicsController extends Controller
             'rollNo' => $rollNo,
             'courseCode' => $courseCode,
         ]);
+
+        return redirect()->back();
+    }
+
+    public function updateStudentRecord (Request $request)
+    {
+        $this->validate($request, [
+            'attendance' => 'numeric|min:0',
+            'periodicalMarks' => 'numeric|min:0',
+            'asnMarks' => 'numeric|min:0',
+            'finalMarks' => 'numeric|min:0',
+        ]);
+
+        $studentRecord = [
+            'attendance' => $request['attendance']  == null ? null : $request['attendance'],
+            'periodicalMarks' => $request['periodicalMarks'] == null ? null : $request['periodicalMarks'],
+            'asnMarks' => $request['asnMarks'] == null ? null : $request['asnMarks'],
+            'finalMarks' => $request['finalMarks']  == null ? null : $request['finalMarks'],
+        ];
+
+        // Update the record
+        AcademicRecord::where(['rollNo' => $request['rollNo'], 'courseCode' => $request['courseCode']])
+            ->update($studentRecord);
 
         return redirect()->back();
     }
