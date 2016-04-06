@@ -175,6 +175,12 @@ class AcademicsController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Update a student record
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function updateStudentRecord (Request $request)
     {
         $this->validate($request, [
