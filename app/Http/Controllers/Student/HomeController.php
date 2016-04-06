@@ -101,10 +101,8 @@ class HomeController extends Controller
     public function addStudentQuery (Request $request)
     {
         $this->validate($request, [
-            'courseCode' => 'unique:studentQueries',
+            'courseCode' => 'required',
             'description' => 'required|max:1000',
-        ], [
-            'unique' => 'You can only ask one doubt per course at a time',
         ]);
         
         $query = [
