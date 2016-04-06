@@ -18,6 +18,12 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/bootstrap/js/fileinput.min.js"></script>
     <script src="/bootstrap/js/plugins/canvas-to-blob.min.js"></script>
+
+    <style>
+        textarea.verticalAlign {
+            resize: vertical;
+        }
+    </style>
 </head>
 
 <body>
@@ -63,7 +69,7 @@
                             <li><a href="/students/performance">View Performance</a></li>
                             <li><a href="/students/attendance">View Attendance</a></li>
                             <li><a href="#">Assignments</a></li>
-                            <li><a href="#">Doubt corner</a></li>
+                            <li><a href="/students/queries">Doubt corner</a></li>
                         @elseif($user == 'teacher')
                             <li><a href="/teachers/home">Home</a></li>
                             <li><a href="/teachers/courses">Teaching Information</a></li>
