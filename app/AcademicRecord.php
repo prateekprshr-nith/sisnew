@@ -17,7 +17,8 @@ class AcademicRecord extends Model
 
     // Fillabe attributes
     protected $fillable = [
-        'rollNo', 'courseCode',
+        'rollNo', 'courseCode', 'attendance',
+        'periodicalMarks', 'asnMarks', 'finalMarks'
     ];
 
     /**
