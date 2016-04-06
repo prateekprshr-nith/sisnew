@@ -51,20 +51,17 @@ function loadAvatarIcon(elementId)
     document.getElementById(elementId).src = '/images/circle.png';
 }
 
-
 /*
  * This function sets the href field of a link
  */
-function setLinkUrl(elementId, url)
+function setLinkUrl(elementId, documentUrl, subUrl)
 {
-    if(url === null)
+    if(subUrl === "")
     {
-        document.getElementById(elementId).href = '#';
+        document.getElementById(elementId).href = "";
     }
     else
     {
-        document.getElementById(elementId).href = url;
+        document.getElementById(elementId).href = documentUrl + subUrl;
     }
-
-
 }
