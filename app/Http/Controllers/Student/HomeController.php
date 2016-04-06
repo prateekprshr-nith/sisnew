@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Student;
 
 use App\StudentImage;
-use App\Http\Requests;
+use App\StudentQuery;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -21,6 +22,7 @@ class HomeController extends Controller
     // Student views
     protected $performanceView = 'student.performance';
     protected $attendanceView = 'student.attendance';
+    protected $queryView = 'student.query';
 
     /**
      * Create a new controller instance.
@@ -61,6 +63,11 @@ class HomeController extends Controller
         return view($this->performanceView, ['academicRecords' => $academicRecords]);
     }
 
+    /**
+     * Show student attendance
+     *
+     * @return mixed
+     */
     public function showStudentAttendance ()
     {
         // Get the academic records of student
@@ -69,6 +76,48 @@ class HomeController extends Controller
         return view($this->attendanceView, ['academicRecords' => $academicRecords]);
     }
 
+    /**
+     * Show student queries
+     *
+     * @return mixed
+     */
+    public function showStudentQueries ()
+    {
+        // Get the student queries
+        $queries = StudentQuery::where(['rollNo' => Auth::guard('student')->user()->rollNo])->get();
+
+        // Get the courses in which student is enrolled
+        $academicRecords = Auth::guard('student')->user()->academicRecords;
+
+        return view($this->queryView, ['queries' => $queries, 'academicRecords' => $academicRecords, 'count' => 0]);
+    }
+
+    /**
+     * Add a student query
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function addStudentQuery (Request $request)
+    {
+        $this->validate($request, [
+            'courseCode' => 'unique:studentQueries',
+            'description' => 'required|max:1000',
+        ], [
+            'unique' => 'You can only ask one doubt per course at a time',
+        ]);
+        
+        $query = [
+            'rollNo' => Auth::guard('student')->user()->rollNo,
+            'courseCode' => $request['courseCode'],
+            'description' => $request['description'],
+        ];
+
+        // Add the query to database
+        StudentQuery::create($query);
+
+        return redirect()->back();
+    }
     /**
      * Return the image of the student.
      *
