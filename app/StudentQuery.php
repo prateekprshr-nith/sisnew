@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 class StudentQuery extends Model
 {
     protected $table = 'studentQueries';
-    protected $primaryKey = ['rollNo', 'courseCode'];
+    protected $primaryKey = ['rollNo', 'courseCode', 'created_at'];
     public $incrementing = false;
 
     // Fillable and hidden arrtibutes
