@@ -42,9 +42,9 @@
                                             @endif
                                         </td>
                                         <td>
-                                            @if($academicRecord->attendance == null ||
-                                                $academicRecord->teachingDetail->lecturesHeld == null
-                                               )
+                                            @if($academicRecord->teachingDetail->lecturesHeld == 0 ||
+                                                $academicRecord->teachingDetail->lecturesHeld == null ||
+                                                $academicRecord->attendance == null)
                                                 NA
                                             @else
                                                 {{-- */$percent = round(($academicRecord->attendance / $academicRecord->teachingDetail->lecturesHeld), 5) * 100;/* --}}
