@@ -30,7 +30,7 @@
                             <textarea name="description" required class="form-control verticalAlign" rows="4" placeholder="Write about your doubt here"></textarea>
                         </div>
                         <div class="col-md-1">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?')">
                                 <span class="glyphicon glyphicon-arrow-right"></span> Ask
                             </button>
                         </div>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="panel-body">
                     @if($queries->isEmpty())
-                        You have not asket any doubt.
+                        You have not asked any doubt.
                     @else
                         <table class="table table-hover">
                             <thead>
