@@ -36,7 +36,7 @@
             <div class="col-md-10">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <span class="glyphicon glyphicon-record"></span>
+                        <span class="glyphicon glyphicon-education"></span>
                         <strong> Student records for {{$courseCode}}</strong>
                     </div>
 
@@ -75,6 +75,8 @@
                                         <form action="/teachers/studentRecords/{{$courseCode}}/updateStudentRecord" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('PATCH') }}
+                                            <input type="hidden" name="rollNo" value="{{$student->rollNo}}">
+                                            <input type="hidden" name="courseCode" value="{{$courseCode}}">
                                             <td>
                                                 <div class="input-group input-group-sm col-md-5">
                                                     <input class="form-control" type="text" name="attendance"
