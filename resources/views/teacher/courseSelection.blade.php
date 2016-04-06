@@ -7,7 +7,7 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="glyphicon glyphicon-pushpin"></span>
                     <strong> Select a course to view student record</strong>
                 </div>
 
@@ -26,7 +26,7 @@
                             <span class="input-group-btn">
                             <a href="#" id="studentRecordLink" class="btn btn-primary"
                                onclick='setLinkUrl("studentRecordLink", "/teachers/studentRecords/" + document.getElementById("courseCode").value)'>
-                                <span class="glyphicon glyphicon-plus"></span> View Record
+                                <span class="glyphicon glyphicon-hand-right"></span> View Record
                             </a>
                         </span>
                         @endif
