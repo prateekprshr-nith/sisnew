@@ -6,7 +6,8 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <strong>Login: Please enter your details correctly</strong>
+                        <span class="glyphicon glyphicon-user"></span>
+                        <strong> Login as a Teacher</strong>
                     </div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="/teachers/login" accept-charset="UTF-8" id="loginForm">
