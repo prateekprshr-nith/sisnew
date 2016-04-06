@@ -24,7 +24,7 @@ class CreateStudentQueriesTable extends Migration
             $table->timestamps();
 
             // Key constraints
-            $table->primary(['rollNo', 'courseCode']);
+            $table->primary(['rollNo', 'courseCode', 'created_at']);
             $table->foreign(['rollNo', 'courseCode'])
                 ->references(['rollNo', 'courseCode'])
                 ->on('academicRecords')
