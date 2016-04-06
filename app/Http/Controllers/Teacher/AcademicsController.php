@@ -50,10 +50,15 @@ class AcademicsController extends Controller
     {
         // Get the courses teacher is teaching
         $teacherCourses = Auth::guard('teacher')->user()->teachingDetails;
+        $teacherCourseCodes = [];
+        foreach ($teacherCourses as $teacherCourse)
+        {
+            array_push($teacherCourseCodes, $teacherCourse->courseCode);
+        }
 
         // Get a list of all courses
         $courses = Course::where('dCode', Auth::guard('teacher')->user()->dCode)
-            ->whereNotIn('courseCode', $teacherCourses)
+            ->whereNotIn('courseCode', $teacherCourseCodes)
             ->get();
 
         return view($this->courseView, ['teacherCourses' => $teacherCourses, 'courses' => $courses]);
