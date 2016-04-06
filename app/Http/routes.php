@@ -74,6 +74,9 @@ Route::group(['middleware' => 'web'], function ()
         Route::put('/courses/addCourse', 'Teacher\AcademicsController@addTeacherCourse');
         Route::patch('/courses/updateLectures', 'Teacher\AcademicsController@updateLectures');
         Route::delete('/courses/removeCourse', 'Teacher\AcademicsController@removeTeacherCourse');
+        Route::get('studentQueries', 'Teacher\AcademicsController@showTeacherCourses');
+        Route::get('studentQueries/{courseCode}', 'Teacher\AcademicsController@showStudentQueries');
+        Route::patch('studentQueries', 'Teacher\AcademicsController@resolveStudentQuery');
 
         // Teacher student record management routes
         Route::get('studentRecords', 'Teacher\AcademicsController@showTeacherCourses');
