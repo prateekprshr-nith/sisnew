@@ -17,7 +17,7 @@
                             <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Course code</th>
+                                    <th>Course</th>
                                     <th>Classes attended</th>
                                     <th>Lectures held</th>
                                     <th>Attendance %</th>
@@ -26,7 +26,7 @@
                             <tbody>
                                 @foreach($academicRecords as $academicRecord)
                                     <tr>
-                                        <td>{{$academicRecord->courseCode}}</td>
+                                        <td>{{$academicRecord->teachingDetail->course->courseName}}</td>
                                         <td>
                                             @if($academicRecord->attendance != null)
                                                 {{$academicRecord->attendance}}
