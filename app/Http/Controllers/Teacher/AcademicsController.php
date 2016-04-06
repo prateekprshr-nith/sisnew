@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Course;
+use App\StudentQuery;
 use App\TeachingDetail;
 use App\AcademicRecord;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ class AcademicsController extends Controller
     // Student record management views
     protected $courseSelectionView = 'teacher.courseSelection';
     protected $studentRecordsView = 'teacher.studentRecords';
+    protected $studentQueryView = 'teacher.studentQueries';
 
     /**
      * Create a new controller instance.
@@ -206,6 +208,41 @@ class AcademicsController extends Controller
         // Update the record
         AcademicRecord::where(['rollNo' => $request['rollNo'], 'courseCode' => $request['courseCode']])
             ->update($studentRecord);
+
+        return redirect()->back();
+    }
+
+    /**
+     * Show student queries
+     *
+     * @param $courseCode
+     * @return mixed
+     */
+    public function showStudentQueries ($courseCode)
+    {
+        // Get a list of student queries for
+        // courses taught by teacher
+        $queries = StudentQuery::where('courseCode', $courseCode)->get();
+
+        return view($this->studentQueryView, ['queries' => $queries, 'count' => 0, 'courseCode' => $courseCode]);
+    }
+
+    /**
+     * Resolve a student query
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function resolveStudentQuery (Request $request)
+    {
+        $rollNo = $request['rollNo'];
+        $courseCode = $request['courseCode'];
+        $created_at = $request['created_at'];
+        $response = $request['response'];
+
+        // Resolve the query
+        StudentQuery::where(['rollNo' => $rollNo, 'courseCode' => $courseCode, 'created_at' => $created_at])
+            ->update(['response' => $response]);
 
         return redirect()->back();
     }
