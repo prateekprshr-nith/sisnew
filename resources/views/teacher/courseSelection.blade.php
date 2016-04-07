@@ -24,7 +24,7 @@
                             </select>
 
                             <span class="input-group-btn">
-                            <a href="#" id="studentRecordLink" class="btn btn-primary"
+                            <a href="" id="studentRecordLink" class="btn btn-primary"
                                onclick='setLinkUrl("studentRecordLink", document.URL + "/", document.getElementById("courseCode").value)'>
                                 <span class="glyphicon glyphicon-hand-right"></span> View
                             </a>
