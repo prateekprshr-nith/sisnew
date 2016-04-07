@@ -68,13 +68,13 @@
                             <li><a href="/students/home">Home</a></li>
                             <li><a href="/students/performance">View Performance</a></li>
                             <li><a href="/students/attendance">View Attendance</a></li>
-                            <li><a href="#">Assignments</a></li>
+                            <li><a href="/students/assignments">Assignments</a></li>
                             <li><a href="/students/queries">Doubt corner</a></li>
                         @elseif($user == 'teacher')
                             <li><a href="/teachers/home">Home</a></li>
                             <li><a href="/teachers/courses">Teaching Information</a></li>
                             <li><a href="/teachers/studentRecords">Student Records</a></li>
-                            <li><a href="#">Assignments</a></li>
+                            <li><a href="/teachers/assignments">Assignments</a></li>
                             <li><a href="/teachers/studentQueries">Doubt corner</a></li>
                         @endif
 
