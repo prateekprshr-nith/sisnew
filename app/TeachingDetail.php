@@ -51,6 +51,16 @@ class TeachingDetail extends Model
     }
 
     /**
+     * Get the course assignments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function assignments ()
+    {
+        return $this->hasMany('App\Assignment', 'courseCode', 'courseCode');
+    }
+
+    /**
      * Get the time table of this course. It returns an array containing the tuples
      * in which the classes of this course take place.
      * Use getResult() funtion on the array contents to get the record, in your
