@@ -43,6 +43,8 @@ Route::group(['middleware' => 'web'], function ()
         Route::get('attendance', 'Student\HomeController@showStudentAttendance');
         Route::get('queries', 'Student\HomeController@showStudentQueries');
         Route::post('queries', 'Student\HomeController@addStudentQuery');
+        Route::get('assignments', 'Student\HomeController@showAssignmentList');
+        Route::get('assignments/{courseCode}/{number}', 'Student\HomeController@showAssignment');
 
         // Student image route, fetches the image of student
         Route::get('image', 'Student\HomeController@getImage');
