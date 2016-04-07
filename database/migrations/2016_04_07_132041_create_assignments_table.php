@@ -21,7 +21,7 @@ class CreateAssignmentsTable extends Migration
             $table->string('courseCode', '10');
             $table->integer('number');
             $table->string('title', '50');
-            $table->string('description', '1000');
+            $table->string('description', '10000');
             $table->date('dueDate');
             $table->timestamps();
 
