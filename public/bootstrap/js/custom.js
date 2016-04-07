@@ -56,12 +56,15 @@ function loadAvatarIcon(elementId)
  */
 function setLinkUrl(elementId, documentUrl, subUrl)
 {
+    console.log('Sub Url = ' + subUrl);
     if(subUrl === "")
     {
+        console.log('IN null');
         document.getElementById(elementId).href = "";
     }
     else
     {
+        console.log('IN !null');
         document.getElementById(elementId).href = documentUrl + subUrl;
     }
 }
