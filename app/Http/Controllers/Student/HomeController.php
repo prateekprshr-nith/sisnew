@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\Assignment;
 use App\StudentImage;
 use App\StudentQuery;
 use Illuminate\Http\Request;
@@ -23,6 +24,8 @@ class HomeController extends Controller
     protected $performanceView = 'student.performance';
     protected $attendanceView = 'student.attendance';
     protected $queryView = 'student.query';
+    protected $assignmentListView = 'student.assignmentList';
+    protected $assignmentView = 'student.assignment';
 
     /**
      * Create a new controller instance.
@@ -116,8 +119,46 @@ class HomeController extends Controller
 
         return redirect()->back();
     }
+
     /**
-     * Return the image of the student.
+     * Show assignment list
+     *
+     * @return mixed
+     */
+    public function showAssignmentList ()
+    {
+        // Get the list of courses of student
+        $courses = [];
+        $academicRecords = Auth::guard('student')->user()->academicRecords;
+
+        foreach ($academicRecords as $academicRecord)
+        {
+            array_push($courses, $academicRecord->courseCode);
+        }
+        
+        // Get the assignments for these courses
+        $assignments = Assignment::whereIn('courseCode', $courses)->get();
+
+        return view($this->assignmentListView, ['assignments' => $assignments]);
+    }
+
+    /**
+     * Show an assignment
+     *
+     * @param $courseCode
+     * @param $number
+     * @return mixed
+     */
+    public function showAssignment ($courseCode, $number)
+    {
+        // Get the assignmet
+        $assignment = Assignment::where(['courseCode' => $courseCode, 'number' => $number])->get();
+
+        return view($this->assignmentView, ['assignment' => $assignment]);
+    }
+
+    /**
+     * Return the image of the student
      *
      * @return mixed
      */
