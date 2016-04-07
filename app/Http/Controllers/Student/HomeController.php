@@ -151,10 +151,10 @@ class HomeController extends Controller
      */
     public function showAssignment ($courseCode, $number)
     {
-        // Get the assignmet
-        $assignment = Assignment::where(['courseCode' => $courseCode, 'number' => $number])->get();
+        // Get the assignmets
+        $assignments = Assignment::where(['courseCode' => $courseCode, 'number' => $number])->get();
 
-        return view($this->assignmentView, ['assignment' => $assignment]);
+        return view($this->assignmentView, ['assignments' => $assignments]);
     }
 
     /**
