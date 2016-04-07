@@ -31,10 +31,10 @@
                                         <td>{{$assignment->teachingDetail->course->courseName}}</td>
                                         <td>{{$assignment->number}}</td>
                                         <td>{{$assignment->title}}</td>
-                                        <td>{{$assignment->created_at}}</td>
+                                        <td>{{date_format($assignment->created_at, 'Y-m-d')}}</td>
                                         <td>{{$assignment->dueDate}}</td>
                                         <td>
-                                            <a href="" id="assignmentLink{{$assignment->courseCode}}{{$assignment->number}}" class="btn btn-primary btn-sm"
+                                            <a href="" id="assignmentLink{{$assignment->courseCode}}{{$assignment->number}}" class="btn-primary btn-sm"
                                                onclick='setLinkUrl(this.id, document.URL + "/", "{{$assignment->courseCode}}" + "/" + "{{$assignment->number}}")'>
                                                 <span class="glyphicon glyphicon-hand-right"></span> View
                                             </a>
