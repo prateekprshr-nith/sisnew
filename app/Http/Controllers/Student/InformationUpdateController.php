@@ -45,11 +45,11 @@ class InformationUpdateController extends Controller
     protected function validator(array $data, Student $student)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|regex:/^[a-zA-Z ]*$/',
             'fatherName' => 'required|max:255',
             'motherName' =>'required|max:255',
             'email' => 'required|email|max:255|unique:students,email,'.$student->rollNo.',rollNo',
-            'phoneNo' => 'required|regex:/(\+91)?[0-9]{10}/|unique:students',
+            'phoneNo' => 'required|regex:/(\+91)?[0-9]{10}/|unique:students,phoneNo,'.$student->phoneNo.',phoneNo',
             'currentAddress' => 'required',
             'permanentAddress' => 'required',
             'dob' => 'required|date',
@@ -86,6 +86,10 @@ class InformationUpdateController extends Controller
         $newMotherName = $request['motherName'];
         $newEmail = $request['email'];
         $newDob = $request['dob'];
+        $newPhoneNo = $request['phoneNo'];
+        $newCurrentAddress = $request['currentAddress'];
+        $newPermanentAddress = $request['permanentAddress'];
+
 
         // Validate the new information
         $validator = $this->validator($request->all(), $student);
@@ -104,6 +108,9 @@ class InformationUpdateController extends Controller
             $student->fatherName = $newFatherName;
             $student->motherName = $newMotherName;
             $student->dob = $newDob;
+            $student->phoneNo = $newPhoneNo;
+            $student->currentAddress = $newCurrentAddress;
+            $student->permanentAddress = $newPermanentAddress;
             $student->save();
 
             return redirect()->back()
@@ -184,7 +191,8 @@ class InformationUpdateController extends Controller
                     $studentImage->save();
                 }
 
-                return redirect('/students/home');
+                return redirect()->back()
+                    ->with('success');
             }
             else
             {
