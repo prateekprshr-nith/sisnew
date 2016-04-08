@@ -105,7 +105,7 @@ class HomeController extends Controller
     {
         $this->validate($request, [
             'courseCode' => 'required',
-            'description' => 'required|max:1000',
+            'description' => 'required|max:5000',
         ]);
         
         $query = [
