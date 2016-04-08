@@ -52,7 +52,7 @@
             </div>
             <div class="panel-body">
                 <div class="btn-group btn-group-justified">
-                    <a href="/admins/manage/timeTable" class="btn btn-default">
+                    <a href="#" class="btn btn-default">
                         <span class="glyphicon glyphicon-user"></span> Manage Time Table
                     </a>
                     <a href="/admins/manage/courses" class="btn btn-default">
