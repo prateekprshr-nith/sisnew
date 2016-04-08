@@ -15,6 +15,11 @@ class TeachingDetail extends Model
     protected $primaryKey = 'courseCode';
     public $incrementing = false;
 
+    //Fillabe attributes
+    protected $fillable = [
+        'courseCode', 'facultyId', 'lecturesHeld',
+    ];
+
     /**
      * Get the teacher
      *
@@ -22,7 +27,7 @@ class TeachingDetail extends Model
      */
     public function teacher()
     {
-        return $this->belongsTo('App\Teacher', 'fId', 'fId');
+        return $this->belongsTo('App\Teacher', 'facultyId', 'facultyId');
     }
 
     /**
@@ -43,6 +48,16 @@ class TeachingDetail extends Model
     public function academicRecords()
     {
         return $this->hasMany('App\AcademicRecord', 'courseCode', 'courseCode');
+    }
+
+    /**
+     * Get the course assignments
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function assignments ()
+    {
+        return $this->hasMany('App\Assignment', 'courseCode', 'courseCode');
     }
 
     /**

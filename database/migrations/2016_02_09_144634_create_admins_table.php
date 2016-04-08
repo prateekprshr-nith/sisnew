@@ -3,6 +3,10 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+/**
+ * Class CreateAdminsTable, this migration
+ * creates the 'admins' table in database
+ */
 class CreateAdminsTable extends Migration
 {
     /**
@@ -14,12 +18,13 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table)
         {
-            $table->string('id', '20');
-            $table->string('password', '50');
+            $table->string('adminId');
+            $table->string('password', '100');
+            $table->rememberToken();
             $table->timestamps();
 
             // Key constraints
-            $table->primary('id');
+            $table->primary('adminId');
         });
     }
 

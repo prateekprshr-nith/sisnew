@@ -15,6 +15,12 @@ class AcademicRecord extends Model
     protected $primaryKey = ['rollNo', 'courseCode'];
     public $incrementing = false;
 
+    // Fillabe attributes
+    protected $fillable = [
+        'rollNo', 'courseCode', 'attendance',
+        'periodicalMarks', 'asnMarks', 'finalMarks'
+    ];
+
     /**
      * Get the student
      *

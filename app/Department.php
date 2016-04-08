@@ -5,39 +5,34 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Department, this is the model for our
- * department table
+ * Class Department, this model corresponds
+ * to 'departments' databse table
  *
  * @package App
  */
 class Department extends Model
 {
+    protected $table = 'departments';
     protected $primaryKey = 'dCode';
     public $incrementing = false;
 
+    // Fillable and hidden attributes
+    protected $fillable = [
+        'dCode', 'dName'
+    ];
+
+
     /**
-     * Get the teachers of the department
+     * Model relationships
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * These functions define the relationship of
+     * this model with other models, and takes
+     * care of how related data is retrived
      */
-    public function teachers()
-    {
-        return $this->hasMany('App\Teacher', 'dCode', 'dCode');
-    }
-
 
     /**
-     * Get the courses of the department
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function courses()
-    {
-        return $this->hasMany('App\Course', 'dCode', 'dCode');
-    }
-
-    /**
-     * Get the sections of the department
+     * Get the sections of this department
+     * Department 1 : many Section
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -47,7 +42,19 @@ class Department extends Model
     }
 
     /**
-     * Get the students of the department
+     * Get the teachers of this department
+     * Department 1 : many Teacher
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function teachers()
+    {
+        return $this->hasMany('App\Teacher', 'dCode', 'dCode');
+    }
+
+    /**
+     * Get the students of this department
+     * Department 1 : many Student
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -55,4 +62,8 @@ class Department extends Model
     {
         return $this->hasMany('App\Student', 'dCode', 'dCode');
     }
+
+
+
+
 }

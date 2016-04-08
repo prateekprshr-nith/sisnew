@@ -5,17 +5,34 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Section, this is our model for sections table
+ * Class Section, this model corresponds
+ * to 'sections' database table
  *
  * @package App
  */
 class Section extends Model
 {
+    protected $table = 'sections';
     protected $primaryKey = 'sectionId';
     public $incrementing = false;
 
+    // Fillable and hidden attributes
+    protected $fillable = [
+        'sectionId', 'dCode',
+    ];
+
+
     /**
-     * Get the department
+     * Model relationships
+     *
+     * These functions define the relationship of
+     * this model with other models, and takes
+     * care of how related data is retrived
+     */
+
+    /**
+     * Get the department of this section
+     * Department 1 : many Section
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -25,23 +42,13 @@ class Section extends Model
     }
 
     /**
-     * Get the students
+     * Get the students of this section
+     * Section 1 : many Student
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function students()
     {
         return $this->hasMany('App\Student', 'sectionId', 'sectionId');
     }
-
-    /**
-     * Get the time tables
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function timeTables()
-    {
-        return $this->hasMany('App\TimeTable', 'sectionId', 'sectionId');
-    }
-
 }
