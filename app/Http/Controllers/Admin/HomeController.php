@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\ChiefWardenStaff;
+use App\Course;
 use App\Hostel;
 use App\Teacher;
 use App\Student;
@@ -25,6 +26,10 @@ use App\Http\Controllers\Controller;
  */
 class HomeController extends Controller
 {
+    // Admin views
+    // #TODO make list other views here
+    protected $courseManagementView = 'admin.manage.courses';
+
     /**
      * Create a new controller instance.
      *
@@ -207,6 +212,58 @@ class HomeController extends Controller
         {
             Section::destroy($sectionId);
         }
+
+        return redirect()->back();
+    }
+
+    /**
+     * Show courses currently present in database
+     *
+     * @return mixed
+     */
+    public function manageCourses ()
+    {
+        // Get the list of courses
+        $courses = Course::all();
+        
+        // Get the list of departments
+        $departments = Department::all();
+
+        return view($this->courseManagementView, ['courses' => $courses,'departments' => $departments, 'count' => 0]);
+    }
+
+    /**
+     * Add a new course
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function addCourse (Request $request)
+    {
+        $this->validate($request, [
+            'courseCode' => 'required|unique:courses',
+            'courseName' => 'required',
+        ]);
+
+        $course = [
+            'courseCode' => $request['courseCode'],
+            'dCode' => $request['dCode'],
+            'courseName' => $request['courseName'],
+        ];
+
+        // Save the course
+        Course::create($course);
+
+        return redirect()->back()
+            ->with('status', 'success');
+    }
+
+    public function removeCourse (Request $request)
+    {
+        $courseCode = $request['courseCode'];
+
+        // Remove the course
+        Course::destroy($courseCode);
 
         return redirect()->back();
     }
