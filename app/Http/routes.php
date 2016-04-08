@@ -138,6 +138,11 @@ Route::group(['middleware' => 'web'], function ()
             Route::get('sections', 'Admin\HomeController@manageSections');
             Route::put('sections', 'Admin\HomeController@addSection');
             Route::delete('sections/{sectionId?}', 'Admin\HomeController@removeSection');
+
+            // Course management routes
+            Route::get('courses', 'Admin\HomeController@manageCourses');
+            Route::put('courses', 'Admin\HomeController@addCourse');
+            Route::delete('courses', 'Admin\HomeController@removeCourse');
         });
     });
 });
