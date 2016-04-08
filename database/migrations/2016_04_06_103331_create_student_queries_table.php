@@ -19,8 +19,8 @@ class CreateStudentQueriesTable extends Migration
         Schema::create('studentQueries', function (Blueprint $table) {
             $table->string('rollNo', '20');
             $table->string('courseCode', '10');
-            $table->string('description', '1000')->nullable();
-            $table->string('response', '1000')->nullable();
+            $table->string('description', '5000')->nullable();
+            $table->string('response', '5000')->nullable();
             $table->timestamps();
 
             // Key constraints
