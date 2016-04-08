@@ -15,9 +15,7 @@
                     </div>
 
                     <div class="panel-body">
-                        <textarea disabled class="form-control verticalAlign" rows="20">
-                            {{$assignments[0]->description}}
-                        </textarea>
+                        <textarea disabled class="form-control verticalAlign" rows="20">{{$assignments[0]->description}}</textarea>
                     </div>
                     <div class="panel-footer text-right">
                         <a href="/students/assignments" class="btn-primary btn-sm">
