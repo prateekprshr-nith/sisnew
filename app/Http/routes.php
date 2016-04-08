@@ -86,6 +86,12 @@ Route::group(['middleware' => 'web'], function ()
         Route::put('/studentRecords/{courseCode}/addStudentRecord', 'Teacher\AcademicsController@addStudentRecord');
         Route::patch('/studentRecords/{courseCode}/updateStudentRecord', 'Teacher\AcademicsController@updateStudentRecord');
 
+        // Teacher assignment management routes
+        Route::get('assignments', 'Teacher\AcademicsController@showAssignmentList');
+        Route::get('assignments/add', 'Teacher\AcademicsController@showAddAssignment');
+        Route::post('assignments/add', 'Teacher\AcademicsController@addAssignment');
+        Route::get('assignments/{courseCode}/{number}', 'Teacher\AcademicsController@showAssignment');
+
         // Manual registration is disabled
         // Route::get('register', 'Teacher\Auth\AuthController@showRegistrationForm');
 
