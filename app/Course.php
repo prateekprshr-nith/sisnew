@@ -14,6 +14,11 @@ class Course extends Model
     protected $primaryKey = 'courseCode';
     public $incrementing = false;
 
+    // Fillabe attributes
+    protected $fillable = [
+        'courseCode', 'dCode', 'courseName',
+    ];
+
     /**
      * Get the department of the course
      *
