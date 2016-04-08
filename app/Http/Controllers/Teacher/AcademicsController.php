@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Teacher;
 
+use Validator;
 use App\Course;
+use App\Assignment;
 use App\StudentQuery;
 use App\TeachingDetail;
 use App\AcademicRecord;
@@ -28,6 +30,9 @@ class AcademicsController extends Controller
     protected $courseSelectionView = 'teacher.courseSelection';
     protected $studentRecordsView = 'teacher.studentRecords';
     protected $studentQueryView = 'teacher.studentQueries';
+    protected $assignmentListView = 'teacher.assignmentList';
+    protected $assignmentAddView = 'teacher.assignmentAdd';
+    protected $assignmentView = 'teacher.assignment';
 
     /**
      * Create a new controller instance.
@@ -245,5 +250,87 @@ class AcademicsController extends Controller
             ->update(['response' => $response]);
 
         return redirect()->back();
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    // Assignment management functions
+
+    /**
+     * Show assignment list
+     *
+     * @return mixed
+     */
+    public function showAssignmentList ()
+    {
+        // Get the teaching details
+        $courses = Auth::guard('teacher')->user()->teachingDetails;
+
+        return view($this->assignmentListView, ['courses' => $courses]);
+    }
+
+    /**
+     * Show an assignment
+     *
+     * @param $courseCode
+     * @param $number
+     * @return mixed
+     */
+    public function showAssignment ($courseCode, $number)
+    {
+        // Get the assignmets
+        $assignments = Assignment::where(['courseCode' => $courseCode, 'number' => $number])->get();
+
+        return view($this->assignmentView, ['assignments' => $assignments]);
+    }
+
+    /**
+     * Show assignment addition view
+     *
+     * @return mixed
+     */
+    public function showAddAssignment ()
+    {
+        // Get the teaching details
+        $courses = Auth::guard('teacher')->user()->teachingDetails;
+
+        return view($this->assignmentAddView, ['courses' => $courses]);
+    }
+
+    /**
+     * Add an assignment
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function addAssignment (Request $request)
+    {
+        // Validate the data
+        $validator = Validator::make($request->all(), [
+            'number' => 'numeric|required|min:0|unique:assignments,number,NULL,id,courseCode,' . $request['courseCode'],
+            'title' => 'required|max:255',
+            'description' => 'required',
+        ], [
+            'unique' => 'This assignment number already exists. Please choose a different number'
+        ]);
+
+        if ($validator->fails())
+        {
+            return redirect('/teachers/assignments/add')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        
+        $assignment = [
+            'courseCode' => $request['courseCode'],
+            'number' => $request['number'],
+            'title' => $request['title'] ,
+            'description' => $request['description'],
+            'dueDate' => $request['dueDate'],
+        ];
+
+        // Save the assignment into db
+        Assignment::create($assignment);
+
+        return redirect('/teachers/assignments');
     }
 }
