@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\ChiefWardenStaff;
 use App\Course;
-use App\Hostel;
 use App\Teacher;
 use App\Student;
 use App\Section;
 use App\Department;
-use App\AdminStaff;
-use App\HostelStaff;
-use App\LibraryStaff;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
