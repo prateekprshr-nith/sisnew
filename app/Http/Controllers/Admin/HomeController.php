@@ -253,6 +253,12 @@ class HomeController extends Controller
             ->with('status', 'success');
     }
 
+    /**
+     * Remove a course
+     *
+     * @param Request $request
+     * @return mixed
+     */
     public function removeCourse (Request $request)
     {
         $courseCode = $request['courseCode'];
