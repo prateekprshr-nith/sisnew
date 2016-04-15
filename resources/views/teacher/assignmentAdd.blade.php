@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <label for="number" class="control-label">Number</label>
-                                    <input required type="number" name="number" class="form-control" id="number">
+                                    <input required type="number" name="number" class="form-control" id="number" min="0">
                                 </div>
                                 <div class="col-md-3">
                                     <label for="dueDate" class="control-label">Due date (yy-mm-dd)</label>
