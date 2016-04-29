@@ -78,10 +78,10 @@ class DatabaseSeeder extends Seeder
         }
 
         // Seed the teachers table
-        $facultyId = 't1';
+        $facultyId = 'ta';
         $dCode = 'CSED';
-        $name = 'Teacher 1';
-        $email = 't1@ex.com';
+        $name = 'TeacherA';
+        $email = 'ta@ex.com';
         $office = 'CSED';
         $phoneNo = '1234567890';
         $password = bcrypt('password');
@@ -115,27 +115,33 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         }
-        
+
         // Seed the courses table
         $courseArr = [
-            'CS-100' => ['dCode' => 'CSED', 'courseName' => 'C programming'],
+            'CSS-121' => ['CSED','Engineering Mathematics-II'],
+            'CSS-122' => ['CSED','Chemistry for Computer Engineers'],
+            'CSH-123' => ['CSED','Communication Skills'],
+            'CSD-124' => ['CSED','Basic Electrical Engineering'],
+            'CSS-125' => ['CSED','Chemistry Lab'],
+            'CSH-126' => ['CSED','Communication Skills Lab'],
+            'CSD-127' => ['CSED','Engineering Graphics'],
         ];
 
-        foreach($courseArr as $courseCode => $detail)
+        foreach($courseArr as $courseCode => $details)
         {
             if(DB::table('courses')->where('courseCode', $courseCode)->value('courseCode') == null)
             {
                 DB::table('courses')->insert([
                     'courseCode' => $courseCode,
-                    'dCode' => $detail['dCode'],
-                    'courseName' => $detail['courseName'],
+                    'dCode' => $details[0],
+                    'courseName' => $details[1],
                 ]);
             }
         }
 
         // Seed the teaching details table
         $teachingDetails = [
-            'CS-100' => 't1',
+            'CSD-127' => 'ta',
         ];
 
         foreach($teachingDetails as $courseCode => $facultyId)
@@ -148,6 +154,5 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         }
-
     }
 }
